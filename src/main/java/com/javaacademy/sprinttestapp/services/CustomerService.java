@@ -24,8 +24,8 @@ public class CustomerService {
         return customers;
     }
 
-    public void insert(Customer customer) {
-        customerRepository.save(customer);
+    public Customer insert(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     public void update(Customer customer) {

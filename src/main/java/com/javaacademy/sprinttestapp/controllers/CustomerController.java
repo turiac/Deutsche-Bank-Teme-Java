@@ -1,5 +1,6 @@
 package com.javaacademy.sprinttestapp.controllers;
 
+import com.javaacademy.sprinttestapp.dto.CustomerDTO;
 import com.javaacademy.sprinttestapp.model.Customer;
 import com.javaacademy.sprinttestapp.services.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,11 @@ public class CustomerController {
         return customer;
     }
 
+    @PostMapping("/customers-dto")
+    public Customer createCustomerDTO(@RequestBody CustomerDTO customerDTO) {
+        Customer customer = new Customer(customerDTO.getName(), customerDTO.getOrders());
+        return customerService.insert(customer);
+    }
 
 
 }

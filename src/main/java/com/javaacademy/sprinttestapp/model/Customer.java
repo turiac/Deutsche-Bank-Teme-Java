@@ -33,6 +33,9 @@ public class Customer {
         this.orders = orders;
     }
 
+    public Customer(String name, List<Order> orders) {
+    }
+
     public Integer getId() {
         return id;
     }
