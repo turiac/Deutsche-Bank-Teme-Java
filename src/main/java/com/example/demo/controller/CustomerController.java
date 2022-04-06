@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.CustomerDAO;
 import com.example.demo.model.Customer;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,23 +12,24 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Data
 public class CustomerController {
 
     private final CustomerDAO customerDAO;
 
     @GetMapping()
-    Optional<CustomerDAO> getAllCustomers(int id) {
+    Optional<Customer> getAllCustomers(int id) {
         return customerDAO.get();
     }
 
     @PostMapping()
     void createCustomer(@RequestBody Customer customer) {
-        //customerDAO.create(customer);
+        customerDAO.create(customer);
     }
 
     @GetMapping("/viewAll")
     public ModelAndView ViewAllCustomers() {
-        Optional<CustomerDAO> customer = customerDAO.get();
+        Optional<Customer> customer = customerDAO.get();
         ModelAndView modelAndView = new ModelAndView("customerView");
         modelAndView.addObject("customers",customer);
         return modelAndView;
@@ -35,7 +37,7 @@ public class CustomerController {
 
     @GetMapping("/view/{id}")
     public ModelAndView viewCustomer(@PathVariable Integer id) {
-        Optional<CustomerDAO> customer = this.customerDAO.get();
+        Optional<Customer> customer = this.customerDAO.get();
         ModelAndView modelAndView = new ModelAndView("customerView");
         modelAndView.addObject("customers",customer);
         return modelAndView;

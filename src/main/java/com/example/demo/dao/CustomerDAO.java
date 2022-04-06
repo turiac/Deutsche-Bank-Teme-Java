@@ -8,30 +8,27 @@ import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class CustomerDAO implements DAO<CustomerDAO> {
+public class CustomerDAO implements DAO<Customer> {
     private final CustomerRepository customerRepository;
 
-    public Optional<CustomerDAO> get(int id) {
+    public Optional<Customer> get(int id) {
         return customerRepository.findById(id);
     }
 
     @Override
-    public Optional<CustomerDAO> get() {
+    public Optional<Customer> get() {
         return Optional.empty();
     }
 
-    @Override
-    public void create(CustomerDAO customer) {
+    public void create(Customer customer) {
         customerRepository.save(customer);
     }
 
-    @Override
-    public void delete(CustomerDAO customer) {
+    public void delete(Customer customer) {
         customerRepository.delete(customer);
     }
 
-    @Override
-    public void update(CustomerDAO customer) {
+    public void update(Customer customer) {
         customerRepository.save(customer);
     }
 
