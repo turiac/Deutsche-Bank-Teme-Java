@@ -3,10 +3,12 @@ package com.example.demo.dao;
 import com.example.demo.model.Customer;
 import com.example.demo.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class CustomerDAO implements DAO<Customer> {
     private final CustomerRepository customerRepository;

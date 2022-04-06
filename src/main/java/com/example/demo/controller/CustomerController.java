@@ -4,6 +4,7 @@ import com.example.demo.dao.CustomerDAO;
 import com.example.demo.model.Customer;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
