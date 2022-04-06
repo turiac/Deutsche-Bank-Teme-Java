@@ -28,7 +28,7 @@ public class CustomerController {
     @GetMapping("/viewAll")
     public ModelAndView ViewAllCustomers() {
         Optional<CustomerDAO> customer = customerDAO.get();
-        ModelAndView modelAndView = new ModelAndView("viewCustomers");
+        ModelAndView modelAndView = new ModelAndView("customerView");
         modelAndView.addObject("customers",customer);
         return modelAndView;
     }
@@ -36,7 +36,7 @@ public class CustomerController {
     @GetMapping("/view/{id}")
     public ModelAndView viewCustomer(@PathVariable Integer id) {
         Optional<CustomerDAO> customer = this.customerDAO.get();
-        ModelAndView modelAndView = new ModelAndView("viewCustomers");
+        ModelAndView modelAndView = new ModelAndView("customerView");
         modelAndView.addObject("customers",customer);
         return modelAndView;
     }
@@ -44,7 +44,7 @@ public class CustomerController {
     @GetMapping("/filter")
     public ModelAndView filterCustomers(@RequestParam("username") String username, @RequestParam("city") String city, @RequestParam("country") String country) {
         List<Customer> customers = customerDAO.findByFilter(username, city, country);
-        ModelAndView modelAndView = new ModelAndView("customersView");
+        ModelAndView modelAndView = new ModelAndView("customerView");
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }

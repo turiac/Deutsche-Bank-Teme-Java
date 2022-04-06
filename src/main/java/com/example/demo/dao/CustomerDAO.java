@@ -36,6 +36,6 @@ public class CustomerDAO implements DAO<CustomerDAO> {
     }
 
     public List<Customer> findByFilter(String username, String city, String country) {
-        return customerRepository.findByFilter(username, city, country);
+        return customerRepository.findByUsernameAndCityAndCountry(username, city, country);
     }
 }
