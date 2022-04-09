@@ -2,10 +2,7 @@ package com.example.demo.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -14,7 +11,12 @@ public class Customer {
     @Id
     @GeneratedValue
     private Integer id;
-    private String username;
     private String city;
     private String country;
+
+    @Column(nullable = false, length = 35)
+    private String username;
+
+    @Column(nullable = false, length = 64)
+    private String password;
 }
